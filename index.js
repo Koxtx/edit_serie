@@ -60,7 +60,7 @@ const createSerieElement = (serie, index) => {
     btnDelete.remove();
     btnEdit.remove();
     const input = document.createElement("input");
-    input.placeholder = serie.name;
+    input.value = serie.name;
 
     const btnCancel = document.createElement("button");
     btnCancel.innerText = "Cancel";
