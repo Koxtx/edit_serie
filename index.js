@@ -3,7 +3,6 @@ const ul = document.querySelector("ul");
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 
-// modification : il faut ajouter une clé de type booléen
 const series = [
   {
     name: "Breaking Bad",
@@ -23,21 +22,22 @@ form.addEventListener("submit", (event) => {
   const value = input.value;
   console.log(value);
   input.value = "";
-
-  addSerie(value);
+  if ((input.value = String(" "))) {
+    addSerie(value);
+  } else {
+    const parag = document.createElement("p");
+    ul.prepend(parag);
+    parag.innerText = "Aucune saisie";
+  }
 });
 
 const displaySeries = () => {
   const seriesNode = series.map((serie, index) => {
-    // placer une condition selon l'état de la nouvelle clé
-
     return createSerieElement(serie, index);
   });
   ul.innerHTML = "";
   ul.append(...seriesNode);
 };
-
-// créer une méthode qui affiche un input avec le nom de la série et 2 boutons cancel et save
 
 const createSerieElement = (serie, index) => {
   const li = document.createElement("li");
@@ -120,8 +120,6 @@ const toggleSerie = (index) => {
   displaySeries();
 };
 
-// modification
-// Créer une méthode qui switche la nouvelle clé du tableau : voir juste ci-dessus
 const editSerie = (index) => {
   series[index].edit = !series[index].edit;
   console.log(series[index]);
@@ -132,8 +130,6 @@ const cancelSerie = (index) => {
   console.log(series[index]);
 };
 
-// Créer une méthode qui va prendre en charge la modification
-// modifier le nom
 const saveSerie = (nameSerie, index) => {
   console.log(nameSerie);
   series[index].name = nameSerie;
