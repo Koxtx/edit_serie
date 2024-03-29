@@ -105,7 +105,7 @@ const createSerieElement = (serie, index) => {
 };
 
 const addSerie = (value) => {
-  series.push({ name: value, seen: false });
+  series.push({ name: value, seen: false, edit: false });
   displaySeries();
 };
 
